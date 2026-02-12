@@ -332,18 +332,19 @@ def _lhsmu(N, samples=None, corr=None, randomstate=None, M=5):
 
 # BoilerBird application
 
-def boilerBird_lhs_application():
-    # establish parameters
-    # conditions
-    numberDimensions = 3 # quantity parameters
-    numberSamples = 15 # quantity samples to generate
-    setCriterion = "centermaximin" # criterion
-    numberIterations = 1000 # number iterations
+# establish parameters
+# conditions
+numberDimensions = 3 # quantity parameters
+numberSamples = 15 # quantity samples to generate
+setCriterion = "centermaximin" # criterion
+numberIterations = 1000 # number iterations
 
-    # quantitative parameters
-    maxFlappingAngle = (20, 60) # range in degrees
-    maxPitchAngle = (5, 35) # range in degrees
-    strouhalNumber = (0.2, 0.4) # range for dimensionless value
+# quantitative parameters
+maxFlappingAngle = (20, 60) # range in degrees
+maxPitchAngle = (5, 35) # range in degrees
+strouhalNumber = (0.2, 0.4) # range for dimensionless value
+
+def boilerBird_lhs_application(numberDimensions, numberSamples, setCriterion, numberIterations, maxFlappingAngle, maxPitchAngle, strouhalNumber):
 
     parameterRanges = [maxFlappingAngle, maxPitchAngle, strouhalNumber] # list of tuples for parameter ranges
 
@@ -369,10 +370,10 @@ print("Results for Latin Hypercube Sampling:")
 
 # DoE for training
 print("Design of Experiments for Training:")
-training_DoE = boilerBird_lhs_application()
+training_DoE = boilerBird_lhs_application(numberDimensions, numberSamples, setCriterion, numberIterations, maxFlappingAngle, maxPitchAngle, strouhalNumber)
 print(training_DoE)
 
 # DoE for testing
 print("Design of Experiments for Testing:")
-testingDoE = boilerBird_lhs_application()
+testingDoE = boilerBird_lhs_application(numberDimensions, numberSamples, setCriterion, numberIterations, maxFlappingAngle, maxPitchAngle, strouhalNumber)
 print(testingDoE)
